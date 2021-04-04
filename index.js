@@ -58,6 +58,25 @@ const questions = [
         }
     },
     {
+        type: 'confirm',
+        name:'confirmLicense',
+        message: 'Would you like to add a license to your README.md?',
+        default: true
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: 'What is your project license?',
+        choices: ['hi','ho','ha','he'],
+        when: ({ confirmLicense }) => {
+            if (confirmLicense) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
         type: 'input',
         name: 'contribution',
         message: 'Enter the contribution guidelines for your project.',
@@ -70,18 +89,57 @@ const questions = [
             }
         }
     },
-    // {
-    //     type: 'list',
-    //     name: 'license',
-    //     message: ''
-    // }
+    {
+        type: 'input',
+        name: 'test',
+        message: 'Enter test instructions for your project.',
+        validate: testInput => {
+            if (testInput) {
+                return true;
+            } else {
+                console.log('Entering the test instructions is required.');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
+        validate: usernameInput => {
+            if (usernameInput) {
+                return true;
+            } else {
+                console.log('You must enter your GitHub username.');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email?',
+        validate: emailInput => {
+            if (emailInput) {
+                return true;
+            } else {
+                console.log('You must enter your email.');
+                return false;
+            }
+        }
+    }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init(questions) {
+    return inquirer.prompt(questions).then(data => {
+        console.log(data);
+    })
+    
+}
 
 // Function call to initialize app
-init();
+init(questions);
