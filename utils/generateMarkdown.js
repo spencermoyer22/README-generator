@@ -3,7 +3,6 @@
 function renderLicenseBadge(license) {
   if (license) {
     let response = '';
-    let message = ''
     switch (license) {
       case 'Apache License 2.0':
         response = 'Apache%202.0';
@@ -22,9 +21,7 @@ function renderLicenseBadge(license) {
         message = 'MPL-2.0';
         break;
     }
-    return `
-    ![License: ${response}](https://img.shields.io/badge/License_${message}_blue)
-    `
+    return `![License: MIT](https://img.shields.io/badge/License-${response}-blue.svg)`
   }
   
   else {
@@ -35,26 +32,38 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return '';
+  if(license) {
+    return `* [License](#license)`;
+  }
+  else {
+    return '';
+  }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
+  if (license) {
+    return `## License
+  This project is ${license} licensed.
+    `
+  }
   return '';
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `
-  # ${data.title}${renderLicenseBadge(data.license)}
-
+  # ${data.title}
+  ${renderLicenseBadge(data.license)}
+  
   ## Description
   ${data.description}
 
   ## Table of Contents
   * [Installation](#installation)
-  * [Usage](#usage)${renderLicenseLink(data.license)}
+  * [Usage](#usage)
+  ${renderLicenseLink(data.license)}
   * [Contribution](#contribution)
   * [Tests](#tests)
   * [Questions](#questions)
@@ -75,8 +84,8 @@ function generateMarkdown(data) {
   ${data.test}
 
   ## Questions
-  If you are interested in my work, here is a link to my [GitHub](https://github/com/${data.username}).
-  If you have any further questions, you can email me at ${data.email}.
+  - If you are interested in my work, here is a link to my [GitHub](https://github/com/${data.username}).
+  - If you have any further questions, you can email me at ${data.email}.
 `;
 }
 
