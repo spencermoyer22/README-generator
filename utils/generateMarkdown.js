@@ -1,7 +1,35 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return '';
+  if (license) {
+    let response = '';
+    let message = ''
+    switch (license) {
+      case 'Apache License 2.0':
+        response = 'Apache%202.0';
+        message = 'Apache-2.0';
+        break;
+      case 'GNU General Public License v3.0':
+        response = 'GPLv3';
+        message = 'GPLv3';
+        break;
+      case 'MIT License':
+        response = 'MIT';
+        message = 'MIT';
+        break;
+      case 'Mozilla Public License':
+        response = 'MPL%202.0';
+        message = 'MPL-2.0';
+        break;
+    }
+    return `
+    ![License: ${response}](https://img.shields.io/badge/License_${message}_blue)
+    `
+  }
+  
+  else {
+    return '';
+  }
 }
 
 // TODO: Create a function that returns the license link
