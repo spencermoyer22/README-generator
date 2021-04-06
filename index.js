@@ -151,7 +151,7 @@ init(questions)
         return generateMarkdown(data);
     })
     .then(markdown => {
-        return writeToFile('README.md', markdown);
+        return writeToFile('./dist/README.md', markdown);
     })
     .catch(err => {
         console.log(err);
