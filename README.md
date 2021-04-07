@@ -13,7 +13,7 @@ must first download this.
 
 ## Usage
 After the program is successfully installed, follow this link to watch a short video on how to run the program through your terminal.
-[How to use](https://drive.google.com/file/d/1tS_p1mn-TXTjMNuMMdNbljZedfRF8jxi/view)
+[How to use](https://drive.google.com/file/d/1QUeAtFMcgknUdgbjPcMiRbJGQiAXJrRV/view)
 
 ## Languages
 - JavaScript
